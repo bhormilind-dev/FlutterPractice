@@ -10,10 +10,19 @@ void main() => runApp(MaterialApp(
 
     ),
     body: Center(
-      child: Text('Hello, Welcome!'),
+      child: Text('Hello, Welcome!',
+      style: TextStyle(
+       fontFamily: 'Dacing',
+       fontWeight: FontWeight.w700,
+       fontSize: 32.0
+      )),
     ),
     floatingActionButton: FloatingActionButton(
-      child: const Text('Click'),
+      child: Text('Click',
+      style: TextStyle(
+        fontFamily: 'Dacing',
+          fontWeight: FontWeight.w700
+      )),
       onPressed: () => {},
       backgroundColor: Colors.teal[600],
     ),
