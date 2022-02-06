@@ -25,13 +25,23 @@ class MTest extends StatelessWidget {
                       image: AssetImage('images/background.jpg'),
                       fit: BoxFit.cover))),
           Center(
-              child: Text('Hello, Welcome!',
-                  style: TextStyle(
-                      color: Colors.grey[350],
-                      fontFamily: 'Dacing',
-                      fontWeight: FontWeight.w700,
-                      fontSize: 32.0,
-                      decoration: TextDecoration.underline)))
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                 Text('Hello, Welcome!',
+                        style: TextStyle(
+                            color: Colors.grey[350],
+                            fontFamily: 'Dacing',
+                            fontWeight: FontWeight.w700,
+                            fontSize: 32.0,
+                            decoration: TextDecoration.underline)),
+                  Icon(
+                    Icons.arrow_forward,
+                    color: Colors.amber,
+                    size: 35,
+                  )
+                ]
+              ))
         ],
       ),
       floatingActionButton: FloatingActionButton(
