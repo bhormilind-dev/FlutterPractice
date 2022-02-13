@@ -10,9 +10,13 @@ class ChooseLocation extends StatefulWidget {
 class _ChooseLocationState extends State<ChooseLocation> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
-        child: Text('Choose Location . . .'),
+        child: Column(
+         children: const [
+           Text('Sample')
+         ],
+        ),
       ),
     );
   }
