@@ -14,17 +14,19 @@ class _HomeState extends State<Home> {
             mainAxisAlignment: MainAxisAlignment.center,
         children: [
           OutlinedButton(
-            onPressed: () {
-              debugPrint('Received click');
+            onPressed: () => {
+              Navigator.pushNamed(context, '/location')
             },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(onPressed: () => {
-                  print('Select the location')
-                }, icon: const Icon(Icons.location_on_sharp), tooltip: 'Choose Location', color: Colors.green, ),
-                const Text('Choose the Location')
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Row(
+
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(Icons.location_on_sharp),
+                  Text('Edit Location')
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 20.0),
