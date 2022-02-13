@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/_services/world_time.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -6,8 +7,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  late WorldTime obj;
+
   @override
   Widget build(BuildContext context) {
+
+    obj = ModalRoute.of(context)?.settings?.arguments! as WorldTime;
+
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -30,9 +37,13 @@ class _HomeState extends State<Home> {
             ),
           ),
           const SizedBox(height: 20.0),
-          const Text('Timing', style: TextStyle(
-              fontSize: 66.0
-          ),)
+          Text('${obj.location}', style: TextStyle(
+              fontSize: 26.0
+          )),
+          const SizedBox(height: 20.0),
+          Text('${obj.time}', style: TextStyle(
+            fontSize: 66.0
+          )),
 
         ],
       )),
