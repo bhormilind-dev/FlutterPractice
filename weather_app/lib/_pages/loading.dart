@@ -30,20 +30,20 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[400],
+      backgroundColor: Colors.grey[900],
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:[
             const SpinKitWave(
-              color: Colors.black,
+              color: Colors.grey,
               size: 50.0,
             ),
             const SizedBox(height: 20),
             Text(timer,
             style: const TextStyle(
               fontSize: 20.0,
-              color: Colors.black
+              color: Colors.grey
             ))
           ],
         ),

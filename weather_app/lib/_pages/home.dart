@@ -16,33 +16,43 @@ class _HomeState extends State<Home> {
     obj = ModalRoute.of(context)?.settings?.arguments! as WorldTime;
 
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
         children: [
           OutlinedButton(
+            style: ButtonStyle(
+                side: MaterialStateProperty.all(const BorderSide(
+                    color: Colors.grey,
+                    width: 1.0,
+                    style: BorderStyle.solid)
+                )),
             onPressed: () => {
               Navigator.pushNamed(context, '/location')
             },
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: Row(
-
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  Icon(Icons.location_on_sharp),
-                  Text('Edit Location')
+                  Icon(Icons.location_on_sharp, color: Colors.amber),
+                  Text('Edit Location', style: TextStyle(
+                    color: Colors.amber
+                  ),)
                 ],
               ),
             ),
           ),
           const SizedBox(height: 20.0),
-          Text('${obj.location}', style: TextStyle(
-              fontSize: 26.0
+          Text(obj.location, style: const TextStyle(
+              fontSize: 26.0,
+              color: Colors.white
           )),
           const SizedBox(height: 20.0),
-          Text('${obj.time}', style: TextStyle(
-            fontSize: 66.0
+          Text('${obj.time}', style: const TextStyle(
+            fontSize: 66.0,
+            color: Colors.white
           )),
 
         ],
