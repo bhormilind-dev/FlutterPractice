@@ -15,7 +15,7 @@ class Answer extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
       child: ElevatedButton(onPressed: selectHandler,
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.purple
+            backgroundColor: Colors.blue,
           ),
           child: Text(caption)),
     );
