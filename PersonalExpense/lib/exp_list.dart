@@ -9,14 +9,16 @@ class ExpenseList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      ...transactions
-          .map((tx) => Container(
+    return Container(
+      height: 250,
+      child:ListView.builder(
+        itemBuilder: (ctx, index) {
+          return Container(
               margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
               width: double.infinity,
               child: Card(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8),
                     side: const BorderSide(color: Colors.purple)
                 ),
                 elevation: 5,
@@ -27,8 +29,8 @@ class ExpenseList extends StatelessWidget {
                       decoration: BoxDecoration(
                           border: Border.all(width: 2, color: Colors.purple),
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(6))),
-                      child: Text('\$${tx.amount}',
+                          const BorderRadius.all(Radius.circular(6))),
+                      child: Text('\$${transactions[index].amount}',
                           style: const TextStyle(
                               fontSize: 20,
                               color: Colors.purple,
@@ -36,18 +38,20 @@ class ExpenseList extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(tx.title,
+                      Text(transactions[index].title,
                           style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold)),
                       Text(
-                        DateFormat.yMMMd().format(tx.date),
+                        DateFormat.yMMMd().format(transactions[index].date),
                         style: const TextStyle(color: Colors.grey),
                       )
                     ],
                   )
                 ]),
-              )))
-          .toList()
-    ]);
+              ));
+        },
+        itemCount: transactions.length,
+      )
+    ) ;
   }
 }
