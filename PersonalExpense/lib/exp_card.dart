@@ -53,7 +53,7 @@ class ExpenseCard extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                 child: ElevatedButton(
-                    onPressed: () =>  _submitData,
+                    onPressed: () =>  _submitData(),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
                       shape: const StadiumBorder()
