@@ -10,7 +10,7 @@ class ExpenseList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      height: 200,
       child:ListView.builder(
         itemBuilder: (ctx, index) {
           return Container(
@@ -30,7 +30,7 @@ class ExpenseList extends StatelessWidget {
                           border: Border.all(width: 2, color: Colors.purple),
                           borderRadius:
                           const BorderRadius.all(Radius.circular(6))),
-                      child: Text('\$${transactions[index].amount}',
+                      child: Text('\$${transactions[index].amount.toStringAsFixed(2)}',
                           style: const TextStyle(
                               fontSize: 20,
                               color: Colors.purple,

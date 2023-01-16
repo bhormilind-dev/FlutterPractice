@@ -19,7 +19,7 @@ class _UserTransactionState extends State<UserTransaction> {
 
   void _addExpense(String title, String amount) {
     setState(() {
-      transactions.add(Transaction(id: 't3', title: title, amount: double.parse(amount), date: DateTime.now()));
+      transactions.add(Transaction(id: DateTime.now().toString(), title: title, amount: double.parse(amount), date: DateTime.now()));
     });
   }
 
