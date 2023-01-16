@@ -7,47 +7,74 @@ import 'package:personal_expense/graph.dart';
 
 import 'exp_card.dart';
 
-void main() => runApp(MainApp());
+void main() => runApp(const MainApp());
 
-
-class MainApp extends StatefulWidget {
-  MainApp({Key? key}) : super(key: key);
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
 
   @override
-  State<MainApp> createState() => _MainAppState();
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: 'Flutter App',
+      home: MyHomePage(),
+    );
+  }
 }
 
-class _MainAppState extends State<MainApp> {
-  final List<Transaction> transactions = [
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final List<Transaction> _transactions = [
     Transaction(id: 't1', title: 'New Shoe', amount: 52.2, date: DateTime.now()),
     Transaction(id: 't2', title: 'New Camera', amount: 3800, date: DateTime.now()),
   ];
 
   void _addExpense(String title, String amount) {
     setState(() {
-      transactions.add(Transaction(id: 't3', title: title, amount: double.parse(amount), date: DateTime.now()));
+      _transactions.add(Transaction(id: DateTime.now().toString(), title: title, amount: double.parse(amount), date: DateTime.now()));
     });
+  }
 
+  void _showStartTransaction(BuildContext ctx) {
+    showModalBottomSheet(
+        context: ctx,
+        builder: (_) {
+          return ExpenseCard(addAction: _addExpense );
+        });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          onPressed: () => _showStartTransaction(context),
+        ),
         appBar: AppBar(
+          centerTitle: false,
           backgroundColor: Colors.purple,
           title: const Text(
               "Personal Expense App"
           ),
+          actions: [
+            IconButton(
+                onPressed: () => _showStartTransaction(context),
+                icon: const Icon(Icons.add)
+            )
+          ],
         ),
         body: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const Graph(),
-            ExpenseCard(addAction: _addExpense),
-            ExpenseList(transactions: transactions)
+            ExpenseList(transactions: _transactions)
           ],
         ),
       ),
