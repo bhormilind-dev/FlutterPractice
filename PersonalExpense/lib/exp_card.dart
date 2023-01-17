@@ -44,14 +44,14 @@ class _ExpenseCardState extends State<ExpenseCard> {
             TextField(
               decoration: const InputDecoration(labelText: 'Title'),
               autocorrect: true,
-              cursorColor: Colors.purple,
+              cursorColor: Theme.of(context).primaryColor,
               controller: titleController,
               onSubmitted: (_) => _submitData(),
             ),
             TextField(
               decoration: const InputDecoration(labelText: 'Amount'),
               autocorrect: true,
-              cursorColor: Colors.purple,
+              cursorColor: Theme.of(context).primaryColor,
               controller: amountController,
               keyboardType: TextInputType.number,
               onSubmitted: (_) => _submitData(),
@@ -61,7 +61,7 @@ class _ExpenseCardState extends State<ExpenseCard> {
               child: ElevatedButton(
                   onPressed: () =>  _submitData(),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple,
+                    backgroundColor: Theme.of(context).accentColor,
                     shape: const StadiumBorder()
                   ),
                   child: const Text('Add Expense')

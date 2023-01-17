@@ -17,7 +17,10 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.purple
+        brightness: Brightness.dark,
+        primarySwatch: Colors.lightGreen,
+        primaryColor: Colors.lightGreen,
+        accentColor: Colors.orange,
       ),
       title: 'Personal Expense',
       home: const MyHomePage(),
@@ -46,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _showStartTransaction(BuildContext ctx) {
     showModalBottomSheet(
-        backgroundColor: Colors.purple,
+        backgroundColor: Theme.of(context).primaryColorLight,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
@@ -70,9 +73,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         appBar: AppBar(
           centerTitle: false,
-          backgroundColor: Colors.purple,
+          foregroundColor: Theme.of(context).accentColor,
           title: const Text(
-              "Personal Expense App"
+              "Personal Expense App",
           ),
           actions: [
             IconButton(

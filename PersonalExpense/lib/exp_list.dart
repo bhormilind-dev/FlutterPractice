@@ -19,7 +19,7 @@ class ExpenseList extends StatelessWidget {
               child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
-                    side: const BorderSide(color: Colors.purple)
+                    side: BorderSide(color: Theme.of(context).primaryColor)
                 ),
                 elevation: 5,
                 child: Row(children: [
@@ -27,13 +27,13 @@ class ExpenseList extends StatelessWidget {
                       margin: const EdgeInsets.all(10),
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                          border: Border.all(width: 2, color: Colors.purple),
+                          border: Border.all(width: 2, color: Theme.of(context).primaryColor),
                           borderRadius:
                           const BorderRadius.all(Radius.circular(6))),
                       child: Text('\$${transactions[index].amount.toStringAsFixed(2)}',
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontSize: 20,
-                              color: Colors.purple,
+                              color: Theme.of(context).primaryColor,
                               fontWeight: FontWeight.bold))),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
