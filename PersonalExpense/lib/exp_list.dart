@@ -10,7 +10,7 @@ class ExpenseList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 496,
       child:ListView.builder(
         itemBuilder: (ctx, index) {
           return Container(

@@ -1,27 +1,41 @@
 import 'package:flutter/material.dart';
 
-class ExpenseCard extends StatelessWidget {
+class ExpenseCard extends StatefulWidget {
   final void Function(String, String) addAction;
 
+
+  const ExpenseCard({required this.addAction, Key? key}) : super(key: key);
+
+  @override
+  State<ExpenseCard> createState() => _ExpenseCardState();
+}
+
+class _ExpenseCardState extends State<ExpenseCard> {
   final  titleController = TextEditingController();
   final  amountController = TextEditingController();
 
-  ExpenseCard({required this.addAction, Key? key}) : super(key: key);
+  bool _isNumeric(String s) {
+    return double.tryParse(s) != null;
+  }
 
   void _submitData() {
     String title = titleController.text;
     String amount = amountController.text;
 
-    if(title.isEmpty ||  double.parse(amount) <= 0) {
+    if(title.isEmpty ||  ( _isNumeric(amount) &&  double.parse(amount)<= 0)) {
       return;
     }
 
-    addAction(title, amount);
+    widget.addAction(title, amount);
+    Navigator.of(context).pop();
   }
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         child: Column(

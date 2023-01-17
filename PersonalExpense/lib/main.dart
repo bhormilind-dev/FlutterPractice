@@ -14,9 +14,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Flutter App',
-      home: MyHomePage(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.purple
+      ),
+      title: 'Personal Expense',
+      home: const MyHomePage(),
     );
   }
 }
@@ -42,16 +46,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _showStartTransaction(BuildContext ctx) {
     showModalBottomSheet(
+        backgroundColor: Colors.purple,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
         context: ctx,
         builder: (_) {
-          return ExpenseCard(addAction: _addExpense );
+          return GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {},
+            child: ExpenseCard(addAction: _addExpense )
+          );
         });
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.add),
           onPressed: () => _showStartTransaction(context),
@@ -77,7 +89,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ExpenseList(transactions: _transactions)
           ],
         ),
-      ),
-    );
+      );
   }
 }
